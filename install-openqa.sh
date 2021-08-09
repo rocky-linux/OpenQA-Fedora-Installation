@@ -37,37 +37,13 @@ download_domains = rockylinux.org fedoraproject.org opensuse.org
 
 [auth]
 method = Fake
-<<<<<<< Updated upstream
-EOF
-
-postgresql-setup --initdb
-
-sudo systemctl enable --now postgresql
-sudo systemctl enable --now httpd
-sudo systemctl enable --now openqa-gru
-sudo systemctl enable --now openqa-scheduler
-sudo systemctl enable --now openqa-websockets
-sudo systemctl enable --now openqa-webui
-sudo systemctl enable --now fm-consumer@fedora_openqa_scheduler
-sudo systemctl enable --now sshd
-
-sudo firewall-cmd --add-port=80/tcp
-sudo firewall-cmd --runtime-to-permanent
-sudo setsebool -P httpd_can_network_connect 1
-sudo systemctl restart httpd
-
-echo Note! the api key will expire in one day after installation!
-
-sudo cat << EOF >  /etc/openqa/client.conf
-=======
 EOF"
 
 if ! systemctl is-active postgresql.service &> /dev/null; then
 #ret=$?
 #if [[ $ret -ne 0 ]]; then
   sudo postgresql-setup --initdb
-  sudo systemctl start postgresql
-  sudo systemctl enable postgresql
+  sudo systemctl enable --now postgresql
 fi
 
 if ! systemctl is-active sshd.service &> /dev/null; then
@@ -80,18 +56,12 @@ fi
 systemctl is-active httpd.service &> /dev/null
 ret=$?
 if [[ $ret -ne 0 ]]; then
-  sudo systemctl start httpd
-  sudo systemctl start openqa-gru
-  sudo systemctl start openqa-scheduler
-  sudo systemctl start openqa-websockets
-  sudo systemctl start openqa-webui
-  sudo systemctl start fm-consumer@fedora_openqa_scheduler
-  sudo systemctl enable httpd
-  sudo systemctl enable openqa-gru
-  sudo systemctl enable openqa-scheduler
-  sudo systemctl enable openqa-websockets
-  sudo systemctl enable openqa-webui
-  sudo systemctl enable fm-consumer@fedora_openqa_scheduler
+  sudo systemctl enable --now httpd
+  sudo systemctl enable --now openqa-gru
+  sudo systemctl enable --now openqa-scheduler
+  sudo systemctl enable --now openqa-websockets
+  sudo systemctl enable --now openqa-webui
+  sudo systemctl enable --now fm-consumer@fedora_openqa_scheduler
   sudo setsebool -P httpd_can_network_connect 1
   sudo systemctl restart httpd
 fi
