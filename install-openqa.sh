@@ -79,4 +79,12 @@ EOF"
   echo "Note! the api key will expire in one day after installation!"
 fi
 
-echo "Done, preparations. Now log in one time! Then run sudo ./install-openqa-post.sh"
+echo ""
+echo "Done, preparations. Now log in one time!"
+echo "If you want to do the Fedora setup following the YouTube video then run..."
+echo "    ./install-openqa-post.sh"
+echo ""
+echo "If you want to do a similar setup but for Rocky Linux then run..."
+echo "    ./install-openqa-post-rocky.sh"
+echo ""
+echo "In either case you may be prompted again for your password for sudo."
