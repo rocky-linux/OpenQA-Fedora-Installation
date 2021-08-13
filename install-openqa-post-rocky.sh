@@ -55,8 +55,7 @@ echo Scheduled job should be started by worker!
 #  FLAVOR=dvd-iso \
 #  ARCH=x86_64 \
 #  GRUB="ip=dhcp bootdev=52:54:00:12:34:56 inst.waitfornet=300" \
-#  SUBVARIANT=Server
-
+#  PACKAGE_SET=server
 
 # Change the network for the QEMU guest and disable post failure hooks to speed
 # development
