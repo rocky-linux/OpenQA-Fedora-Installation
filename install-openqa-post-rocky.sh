@@ -4,7 +4,7 @@ set -e
 
 if [[ ! -d /var/lib/openqa/tests/rocky ]]; then
   cd /var/lib/openqa/tests/
-  sudo git clone https://github.com/tcooper/os-autoinst-distri-rocky.git rocky
+  sudo git clone https://github.com/rocky-linux/os-autoinst-distri-rocky.git rocky
   sudo chown -R geekotest:geekotest rocky
   cd rocky
   sudo git checkout develop
