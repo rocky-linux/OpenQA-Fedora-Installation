@@ -14,10 +14,10 @@ fi
 sudo mkdir -p /var/lib/openqa/share/factory/iso
 if [[ ! -f /var/lib/openqa/share/factory/iso/CHECKSUM ]]; then
   cd /var/lib/openqa/share/factory/iso
-  sudo curl -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-boot.iso
-  sudo curl -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-minimal.iso
-  sudo curl -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-dvd1.iso
-  sudo curl -O download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-boot.iso
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-minimal.iso
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-dvd1.iso
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM
   shasum -a 256 --ignore-missing -c CHECKSUM
 fi
 
