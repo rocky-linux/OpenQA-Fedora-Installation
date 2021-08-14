@@ -40,22 +40,16 @@ method = Fake
 EOF"
 
 if ! systemctl is-active postgresql.service &> /dev/null; then
-#ret=$?
-#if [[ $ret -ne 0 ]]; then
   sudo postgresql-setup --initdb
   sudo systemctl enable --now postgresql
 fi
 
 if ! systemctl is-active sshd.service &> /dev/null; then
-#ret=$?
-#if [[ $ret -ne 0 ]]; then
   sudo systemctl start sshd
   sudo systemctl enable sshd
 fi
 
-systemctl is-active httpd.service &> /dev/null
-ret=$?
-if [[ $ret -ne 0 ]]; then
+if ! systemctl is-active httpd.service &> /dev/null; then
   sudo systemctl enable --now httpd
   sudo systemctl enable --now openqa-gru
   sudo systemctl enable --now openqa-scheduler
@@ -66,8 +60,8 @@ if [[ $ret -ne 0 ]]; then
   sudo systemctl restart httpd
 fi
 
-#sudo firewall-cmd --add-port=80/tcp
-#sudo firewall-cmd --runtime-to-permanent
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --reload
 
 if sudo grep -q foo /etc/openqa/client.conf; then
   sudo bash -c "cat >/etc/openqa/client.conf <<'EOF'
