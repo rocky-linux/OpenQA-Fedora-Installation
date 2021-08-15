@@ -65,7 +65,6 @@ sudo firewall-cmd --reload
 
 if sudo grep -q foo /etc/openqa/client.conf; then
   sudo bash -c "cat >/etc/openqa/client.conf <<'EOF'
->>>>>>> Stashed changes
 [localhost]
 key = 1234567890ABCDEF
 secret = 1234567890ABCDEF
