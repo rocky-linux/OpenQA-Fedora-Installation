@@ -30,9 +30,7 @@ sudo openqa-cli api -X POST isos \
   VERSION=8 \
   GRUB="ip=dhcp bootdev=52:54:00:12:34:56 inst.waitfornet=300"
 
-
-systemctl is-active openqa-worker@1 &> /dev/null
-if [[ $? -eq 1 ]]; then
+if ! systemctl is-active openqa-worker@1 &> /dev/null; then
   sudo systemctl enable --now openqa-worker@1
 fi
 
