@@ -36,6 +36,10 @@ fi
 
 echo Scheduled job should be started by worker!
 
+echo Here is the jobs overview provided by openqa-cli api...
+echo "openqa-cli api -X GET --pretty jobs/overview"
+openqa-cli api -X GET --pretty jobs/overview
 
-
-
+echo Here is the job detail for the first job...
+echo "openqa-cli api -X GET --pretty jobs/1"
+openqa-cli api -X GET --pretty jobs/1
