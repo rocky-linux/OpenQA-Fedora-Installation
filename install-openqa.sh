@@ -61,6 +61,10 @@ if ! systemctl is-active httpd.service &> /dev/null; then
 fi
 
 sudo firewall-cmd --permanent --add-service=http
+# Open vnc port for 4 local worker clients
+sudo firewall-cmd --permanent --new-service=openqa-vnc
+sudo firewall-cmd --permanent --service=openqa-vnc --add-port=5991-5994/tcp
+sudo firewall-cmd --permanent --add-service openqa-vnc
 sudo firewall-cmd --reload
 
 if sudo grep -q foo /etc/openqa/client.conf; then
