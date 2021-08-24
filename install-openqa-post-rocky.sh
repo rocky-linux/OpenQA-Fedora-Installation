@@ -8,8 +8,8 @@ if [[ ! -d /var/lib/openqa/tests/rocky ]]; then
   sudo chown -R geekotest:geekotest rocky
   cd rocky
   sudo git checkout develop
-  sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
 fi
+cd /var/lib/openqa/tests/rocky && sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
 
 sudo mkdir -p /var/lib/openqa/share/factory/iso/fixed
 if [[ ! -f /var/lib/openqa/share/factory/iso/fixed/CHECKSUM ]]; then
