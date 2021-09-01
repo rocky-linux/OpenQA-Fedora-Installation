@@ -8,8 +8,8 @@ if [[ ! -d /var/lib/openqa/tests/rocky ]]; then
   sudo chown -R geekotest:geekotest rocky
   cd rocky
   sudo git checkout develop
-  sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
 fi
+cd /var/lib/openqa/tests/rocky && sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
 
 sudo mkdir -p /var/lib/openqa/share/factory/iso/fixed
 if [[ ! -f /var/lib/openqa/share/factory/iso/fixed/CHECKSUM ]]; then
@@ -27,8 +27,8 @@ sudo openqa-cli api -X POST isos \
   ARCH=x86_64 \
   DISTRI=rocky \
   FLAVOR=minimal-iso \
-  VERSION=8 \
-  GRUB="ip=dhcp bootdev=52:54:00:12:34:56 inst.waitfornet=300"
+  VERSION=8.4 \
+  BUILD="$(date +%Y%m%d.%H%M%S).0"
 
 if ! systemctl is-active openqa-worker@1 &> /dev/null; then
   sudo systemctl enable --now openqa-worker@1
