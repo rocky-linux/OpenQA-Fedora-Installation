@@ -10,7 +10,7 @@ export release
 echo Installing OpenQA on Fedora
 echo Running on: "$release"
 
-pkgs=(git vim-enhanced openqa openqa-httpd openqa-worker fedora-messaging libguestfs-tools libguestfs-xfs python3-fedfind python3-libguestfs libvirt-daemon-config-network virt-install withlock postgresql-server perl-REST-Client)
+pkgs=(git vim-enhanced openqa openqa-httpd openqa-worker fedora-messaging guestfs-tools libguestfs-xfs python3-fedfind python3-libguestfs libvirt-daemon-config-network virt-install withlock postgresql-server perl-REST-Client)
 if ! rpm -q "${pkgs[@]}" &> /dev/null; then
   sudo dnf install -y "${pkgs[@]}"
 else
