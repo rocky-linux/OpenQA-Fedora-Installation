@@ -14,20 +14,20 @@ cd /var/lib/openqa/tests/rocky && sudo ./fifloader.py -l -c templates.fif.json t
 sudo mkdir -p /var/lib/openqa/share/factory/iso/fixed
 if [[ ! -f /var/lib/openqa/share/factory/iso/fixed/CHECKSUM ]]; then
   cd /var/lib/openqa/share/factory/iso/fixed
-  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-boot.iso
-  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-minimal.iso
-  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.4-x86_64-dvd1.iso
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-boot.iso
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-minimal.iso
+  sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-dvd1.iso
   sudo curl -C - -O download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM
   shasum -a 256 --ignore-missing -c CHECKSUM
 fi
 
 echo Now post a new job for Rocky :-\)
 sudo openqa-cli api -X POST isos \
-  ISO=Rocky-8.4-x86_64-minimal.iso \
+  ISO=Rocky-8.5-x86_64-minimal.iso \
   ARCH=x86_64 \
   DISTRI=rocky \
   FLAVOR=minimal-iso \
-  VERSION=8.4 \
+  VERSION=8.5 \
   BUILD="$(date +%Y%m%d.%H%M%S).0"
 
 if ! systemctl is-active openqa-worker@1 &> /dev/null; then
