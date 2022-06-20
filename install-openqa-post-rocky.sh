@@ -7,6 +7,7 @@ if [[ ! -d /var/lib/openqa/tests/rocky ]]; then
   sudo git clone https://github.com/rocky-linux/os-autoinst-distri-rocky.git rocky
   sudo chown -R geekotest:geekotest rocky
   cd rocky
+  git config --global --add safe.directory /var/lib/openqa/share/tests/rocky
   sudo git checkout develop
 fi
 cd /var/lib/openqa/tests/rocky && sudo ./fifloader.py -l -c templates.fif.json templates-updates.fif.json
@@ -29,10 +30,6 @@ sudo openqa-cli api -X POST isos \
   FLAVOR=minimal-iso \
   VERSION=8.6 \
   BUILD="$(date +%Y%m%d.%H%M%S).0"
-
-if ! systemctl is-active openqa-worker@1 &> /dev/null; then
-  sudo systemctl enable --now openqa-worker@1
-fi
 
 echo Scheduled job should be started by worker!
 
