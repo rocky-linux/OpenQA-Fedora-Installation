@@ -34,6 +34,7 @@ sudo bash -c "cat >/etc/openqa/openqa.ini <<'EOF'
 [global]
 branding=plain
 download_domains = rockylinux.org fedoraproject.org opensuse.org
+recognized_referers = bugs.rockylinux.org git.rockylinux.org bugzilla.suse.com bugzilla.opensuse.org progress.opensuse.org github.com
 
 [auth]
 method = Fake
@@ -63,7 +64,7 @@ fi
 sudo firewall-cmd --permanent --add-service=http
 # Open vnc port for 4 local worker clients
 sudo firewall-cmd --permanent --new-service=openqa-vnc
-sudo firewall-cmd --permanent --service=openqa-vnc --add-port=5991-5994/tcp
+sudo firewall-cmd --permanent --service=openqa-vnc --add-port=5991-5999/tcp
 sudo firewall-cmd --permanent --add-service openqa-vnc
 sudo firewall-cmd --reload
 
