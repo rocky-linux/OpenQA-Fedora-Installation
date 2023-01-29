@@ -1,0 +1,15 @@
+--- assetpack.def.orig	2023-01-24 03:37:58.521562449 +0000
++++ assetpack.def	2023-01-24 03:38:14.488517673 +0000
+@@ -246,6 +246,12 @@
+ ! terminal.svg
+ < images/terminal.svg
+ 
++! rocky.png
++< images/rocky.png
++
++! rocky.svg
++< images/rocky.svg
++
+ ! suse.png
+ < images/suse.png
+ 
