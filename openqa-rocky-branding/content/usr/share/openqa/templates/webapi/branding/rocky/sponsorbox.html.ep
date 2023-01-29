@@ -1,0 +1,5 @@
+<div class="text-right" id="sponsorbox">
+    <a href="https://www.rockylinux.org" title="Rocky Linux">
+        <img alt="sponsor_rocky_linux" width="100%" src="<%= icon_url 'rocky.svg' %>" />
+    </a>
+</div>
